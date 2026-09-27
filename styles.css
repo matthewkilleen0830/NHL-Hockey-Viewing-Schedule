@@ -35,6 +35,7 @@ html, body {
   width: 100%;
   height: auto;          /* Scaled proportionally */
   display: block;        /* Prevents inline gaps underneath image */
+  filter: brightness(115%);
 }
 
 /* Ensure parent wrapper enforces strict flexbox alignment */
