@@ -50,13 +50,13 @@ Check out the live interactive application hosted on GitHub Pages:
 ## 📁 Repository Structure
 
 ```text
-├── index.html          # Main HTML entry point with layout & SEO metadata
-├── styles.css          # Custom Art Deco dark-theme styling & responsive rules
-├── script.js           # Dynamic data fetching, filter logic, and Plotly chart rendering
-├── currentWeek/        # Active schedule data directory
-│   └── weekFull.csv # Weekly matchup dataset
-├── images/             # Visual asset directory
-│   ├── favicon.png     # Browser favicon icon
-│   ├── headerBanner.png# Dashboard header banner & Open Graph preview image
-│   └── icon.png        # Web app icon
-└── README.md           # Project documentation
+├── index.html            # Main HTML entry point with layout & SEO metadata
+├── styles.css            # Custom Art Deco dark-theme styling & responsive rules
+├── script.js             # Dynamic data fetching, filter logic, and Plotly chart rendering
+├── currentWeek/          # Active schedule data directory
+│   └── weekFull.csv      # Weekly matchup dataset
+├── images/               # Visual asset directory
+│   ├── favicon.png       # Browser favicon icon
+│   ├── headerBanner.png  # Dashboard header banner & Open Graph preview image
+│   └── icon.png          # Web app icon
+└── README.md             # Project documentation
