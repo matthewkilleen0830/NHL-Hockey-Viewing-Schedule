@@ -57,6 +57,5 @@ Check out the live interactive application hosted on GitHub Pages:
 │   └── weekFull.csv      # Weekly matchup dataset
 ├── images/               # Visual asset directory
 │   ├── favicon.png       # Browser favicon icon
-│   ├── headerBanner.png  # Dashboard header banner & Open Graph preview image
-│   └── icon.png          # Web app icon
+│   └── headerBanner.png  # Dashboard header banner & Open Graph preview image
 └── README.md             # Project documentation
