@@ -1,9 +1,4 @@
 ﻿Date,Matchup,TV_Network,Start_Time,End_Time,Visitor_Conference,Home_Conference
-"Tue, Sep 29",Panthers at Hurricanes,ESPN,4:00 PM,6:45 PM,Eastern (Atlantic),Eastern (Metropolitan)
-"Tue, Sep 29",Canadiens at Maple Leafs,ESPN+,6:00 PM,8:45 PM,Eastern (Atlantic),Eastern (Atlantic)
-"Tue, Sep 29",Rangers at Bruins,ESPN,7:00 PM,9:45 PM,Eastern (Metropolitan),Eastern (Atlantic)
-"Tue, Sep 29",Canucks at Oilers,ESPN+,9:00 PM,11:45 PM,Western (Pacific),Western (Pacific)
-"Tue, Sep 29",Blackhawks at Golden Knights,ESPN,9:30 PM,12:15 AM,Western (Central),Western (Pacific)
 "Wed, Sep 30",Penguins at Flyers,TNT,6:30 PM,9:15 PM,Eastern (Metropolitan),Eastern (Metropolitan)
 "Wed, Sep 30",Islanders at Maple Leafs,ESPN+,6:30 PM,9:15 PM,Eastern (Metropolitan),Eastern (Atlantic)
 "Wed, Sep 30",Kings at Avalanche,TNT,9:00 PM,11:45 PM,Western (Pacific),Western (Central)
@@ -38,3 +33,7 @@
 "Sun, Oct 04",Panthers at Ducks,Prime Video,7:00 PM,9:45 PM,Eastern (Atlantic),Western (Pacific)
 "Sun, Oct 04",Flames at Kraken,ESPN+,7:00 PM,9:45 PM,Western (Pacific),Western (Pacific)
 "Sun, Oct 04",Golden Knights at Canucks,ESPN+,8:00 PM,10:45 PM,Western (Pacific),Western (Pacific)
+"Mon, Oct 05",Flyers at Lightning,NHL Network,6:00 PM,8:45 PM,Eastern (Metropolitan),Eastern (Atlantic)
+"Mon, Oct 05",Senators at Bruins,ESPN+,6:30 PM,9:15 PM,Eastern (Atlantic),Eastern (Atlantic)
+"Mon, Oct 05",Jets at Penguins,ESPN+,6:30 PM,9:15 PM,Western (Central),Eastern (Metropolitan)
+"Mon, Oct 05",Sharks at Stars,ESPN+,7:00 PM,9:45 PM,Western (Pacific),Western (Central)
