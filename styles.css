@@ -1,12 +1,7 @@
-/* ==========================================================================
-   CFPtheme1 - High-Gloss Metallic Silver & Dark Theme
-   ========================================================================== */
-
 :root {
   --sidebar-width: 300px;
 }
 
-/* Global Reset and Base Layout */
 html, body {
   height: 100%;
   margin: 0;
@@ -15,9 +10,10 @@ html, body {
   color: #f0f0f0;
   font-family: 'Arial Bold', 'Helvetica Neue Bold', Arial, Helvetica, sans-serif !important;
   font-weight: 450 !important;
+  overflow-x: hidden;
+  width: 100%;
 }
 
-/* Header Banner Styling */
 .top-banner {
   width: 100%;
   padding-left: 0.5rem;
@@ -26,7 +22,6 @@ html, body {
   box-sizing: border-box;
   overflow: hidden;
 
-  /* Sticky positioning */
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -40,19 +35,22 @@ html, body {
   filter: brightness(115%);
 }
 
-/* Ensure parent wrapper enforces strict flexbox alignment */
 .main-wrapper {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .dashboard-body {
   width: 100%;
-  align-items: stretch;
+  max-width: 100%;
+  align-items: flex-start;
+  overflow-x: hidden;
 }
 
-/* Collapsible Sidebar Wrapper */
 .sidebar-wrapper {
   width: var(--sidebar-width);
   flex-shrink: 0;
@@ -64,12 +62,10 @@ html, body {
   box-sizing: border-box;
 }
 
-/* Collapsed State: Slide Panel Off-Screen while keeping toggle tab visible on left edge */
 .sidebar-wrapper.collapsed {
   margin-left: calc(-1 * var(--sidebar-width));
 }
 
-/* Tab Toggle Button (High-Gloss Metallic Silver Theme) */
 .filter-toggle-btn {
   position: absolute;
   top: 16px;
@@ -96,6 +92,25 @@ html, body {
   border-color: #ffffff;
 }
 
+/* Eye-Catching Pulse/Flash Animation */
+@keyframes toggleAttention {
+  0%, 100% {
+    transform: scale(1);
+    border-color: #5a6578;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  }
+  50% {
+    transform: scale(1.2);
+    background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%);
+    border-color: #ffffff;
+    box-shadow: 0 0 18px rgba(59, 130, 246, 0.9), inset 0 1px 2px rgba(255, 255, 255, 0.9);
+  }
+}
+
+.filter-toggle-btn.attention-flash {
+  animation: toggleAttention 0.7s ease-in-out 3;
+}
+
 .toggle-arrow {
   font-size: 11px;
   line-height: 1;
@@ -108,21 +123,20 @@ html, body {
   transform: rotate(180deg);
 }
 
-/* Dynamic Charts Column Scaling */
 .charts-column {
   flex: 1 1 auto !important;
   max-width: 100% !important;
   width: 100% !important;
-  min-width: 0 !important; /* CRITICAL: Allows Plotly SVG to recalculate width smoothly */
+  min-width: 0 !important;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   transition: width 0.3s ease, padding 0.3s ease;
+  box-sizing: border-box;
 }
 
-/* Shared Silver Metallic Border & Dark Panel Base Style */
 .filter-panel, 
 .chart-container {
   border-radius: 14px;
@@ -137,7 +151,6 @@ html, body {
   letter-spacing: -0.05em !important;
 }
 
-/* Sidebar Control Panel */
 .filter-panel {
   padding: 1.25rem;
   padding-right: 0.75rem;
@@ -151,7 +164,6 @@ html, body {
   box-sizing: border-box;
 }
 
-/* Shiny Metallic Silver Headings */
 .filter-panel h1, 
 .filter-panel h2, 
 .filter-panel h3, 
@@ -170,7 +182,6 @@ html, body {
   display: inline-block;
 }
 
-/* Slicer option labels */
 .filter-panel label {
   background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 60%, #64748b 100%);
   -webkit-background-clip: text;
@@ -181,7 +192,6 @@ html, body {
   margin-bottom: 0.25rem;
 }
 
-/* Inputs and Select Dropdowns in Sidebar */
 .filter-panel .form-control,
 .filter-panel .form-select {
   background-color: #0d0f12;
@@ -199,7 +209,6 @@ html, body {
   box-shadow: 0 0 10px rgba(226, 232, 240, 0.6);
 }
 
-/* Scrollable Checkbox Panel Styling */
 .checkbox-panel {
   overflow-y: auto;
   background-color: #0b0d0f;
@@ -207,7 +216,7 @@ html, body {
   border-radius: 0.375rem;
   padding: 0.5rem 0.75rem;
   color: #f0f0f0;
-  max-height: 150px;
+  max-height: 180px;
   min-height: auto;
 }
 
@@ -223,7 +232,6 @@ html, body {
   padding-left: 0.75rem;
 }
 
-/* Global Custom Metallic Silver Checkboxes */
 .form-check-input {
   background-color: #000000;
   border: 1.5px solid #94a3b8;
@@ -251,7 +259,6 @@ html, body {
   cursor: pointer;
 }
 
-/* Custom Shiny Silver Scrollbars */
 .filter-panel::-webkit-scrollbar,
 .checkbox-panel::-webkit-scrollbar {
   width: 6px;
@@ -270,26 +277,24 @@ html, body {
   border-radius: 3px;
 }
 
-/* Base Chart Card Containers */
 .chart-container {
   padding: 1rem 1rem 0.5rem 1rem;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  flex: 1 0 auto;
-  min-height: 200px;
+  height: fit-content;
+  flex: 0 0 auto;
+  min-height: auto;
   width: 100% !important;
   margin-right: 0 !important;
   box-sizing: border-box;
 }
 
-/* Plotly Canvas setup */
 .plotly-chart {
   width: 100% !important;
   min-width: 0 !important;
 }
 
-/* Style Plotly text SVG nodes inside chart containers */
 .chart-container text {
   font-family: 'Segoe UI', Tahoma, sans-serif !important;
   fill: #e2e8f0 !important;
@@ -313,4 +318,32 @@ html, body {
 .tiny-icon {
   width: 48px;
   height: 48px;
+}
+
+@media (max-width: 1199.98px) {
+  .sidebar-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 1050;
+    filter: drop-shadow(5px 0 25px rgba(0, 0, 0, 0.95));
+  }
+
+  .filter-panel {
+    top: 0;
+    border-radius: 0 14px 14px 0;
+    min-height: 100%;
+  }
+
+  .charts-column {
+    padding-left: 1.75rem !important;
+    padding-right: 0.25rem !important;
+    gap: 1rem;
+  }
+
+  .chart-container {
+    padding: 0.75rem 0.25rem 0.25rem 0.25rem;
+    border-radius: 10px;
+  }
 }
