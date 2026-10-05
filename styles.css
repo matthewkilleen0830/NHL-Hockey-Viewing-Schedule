@@ -2,6 +2,10 @@
    CFPtheme1 - High-Gloss Metallic Silver & Dark Theme
    ========================================================================== */
 
+:root {
+  --sidebar-width: 300px;
+}
+
 /* Global Reset and Base Layout */
 html, body {
   height: 100%;
@@ -13,13 +17,12 @@ html, body {
   font-weight: 450 !important;
 }
 
-/* Header Banner Styling - Scaled and Padded to match grid alignment */
+/* Header Banner Styling */
 .top-banner {
   width: 100%;
-  padding-left: 0.5rem;  /* Matches lower column outer padding */
-  padding-right: 0.5rem; /* Matches lower column outer padding */
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   padding-bottom: 1rem;
-  /* padding-top: 0rem; */
   box-sizing: border-box;
   overflow: hidden;
 
@@ -27,48 +30,96 @@ html, body {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  z-index: 1000;         /* Keeps banner on top of charts while scrolling */
-  /* background-color: #0d0d0d; Prevents chart content from showing through underneath */
+  z-index: 1000;
 }
 
 .top-banner img {
   width: 100%;
-  height: auto;          /* Scaled proportionally */
-  display: block;        /* Prevents inline gaps underneath image */
+  height: auto;
+  display: block;
   filter: brightness(115%);
 }
 
 /* Ensure parent wrapper enforces strict flexbox alignment */
 .main-wrapper {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.main-wrapper > .row {
-  display: flex !important;
-  flex-wrap: nowrap !important;
-  margin-right: 0 !important;
-  margin-left: 0 !important;
+.dashboard-body {
+  width: 100%;
+  align-items: stretch;
 }
 
-/* Bootstrap Column Overrides to strictly enforce 22vw / calc(100% - 22vw) */
-.main-wrapper > .row > .col-md-2 {
-  flex: 0 0 25vw !important;
-  max-width: 25vw !important;
-  width: 25vw !important;
+/* Collapsible Sidebar Wrapper */
+.sidebar-wrapper {
+  width: var(--sidebar-width);
+  flex-shrink: 0;
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 100;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  box-sizing: border-box;
 }
 
+/* Collapsed State: Slide Panel Off-Screen while keeping toggle tab visible on left edge */
+.sidebar-wrapper.collapsed {
+  margin-left: calc(-1 * var(--sidebar-width));
+}
+
+/* Tab Toggle Button (High-Gloss Metallic Silver Theme) */
+.filter-toggle-btn {
+  position: absolute;
+  top: 16px;
+  right: -24px;
+  width: 24px;
+  height: 52px;
+  background: linear-gradient(180deg, #1d2127 0%, #0d0f12 100%);
+  border: 2px solid #5a6578;
+  border-left: none;
+  border-radius: 0 8px 8px 0;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 200;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.6),
+              inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.filter-toggle-btn:hover {
+  background: linear-gradient(180deg, #2a3038 0%, #16181d 100%);
+  border-color: #ffffff;
+}
+
+.toggle-arrow {
+  font-size: 11px;
+  line-height: 1;
+  color: #cbd5e1;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.sidebar-wrapper.collapsed .toggle-arrow {
+  transform: rotate(180deg);
+}
+
+/* Dynamic Charts Column Scaling */
 .charts-column {
-  flex: 0 0 calc(100% - 25vw) !important;
-  max-width: calc(100% - 25vw) !important;
-  width: calc(100% - 25vw) !important;
-  min-width: 0 !important; /* CRITICAL: Allows nested Plotly SVG to shrink/grow within flex bounds */
+  flex: 1 1 auto !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  min-width: 0 !important; /* CRITICAL: Allows Plotly SVG to recalculate width smoothly */
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  transition: width 0.3s ease, padding 0.3s ease;
 }
 
 /* Shared Silver Metallic Border & Dark Panel Base Style */
@@ -91,27 +142,13 @@ html, body {
   padding: 1.25rem;
   padding-right: 0.75rem;
   position: sticky;
-  top: 1rem;
+  top: clamp(2rem, 6vw, 6rem);
   z-index: 100;
   height: fit-content;
   max-height: auto;
   width: 100%;
   overflow-y: auto;
   box-sizing: border-box;
-}
-
-/* Sticky Sidebar for Desktop Viewports */
-@media (min-width: 768px) {
-  .filter-panel, 
-  .col-md-2 { /* Update to match your left column's exact CSS selector */
-    position: -webkit-sticky;
-    position: sticky;
-    /* top: 6rem;            Distance from top of viewport when scrolling */
-    /* top: clamp(2rem, 6vw, 6rem); */
-    top: clamp(2rem, 6vw, 6rem);
-    align-self: flex-start; /* Crucial for Bootstrap flex rows */
-    z-index: 100;
-  }
 }
 
 /* Shiny Metallic Silver Headings */
@@ -182,12 +219,11 @@ html, body {
   margin-bottom: 0;
 }
 
-/* Add to your CSS stylesheet */
 .ranked-toggle-wrapper {
-  padding-left: 0.75rem; /* Matches the inner horizontal padding of .checkbox-panel */
+  padding-left: 0.75rem;
 }
 
-/* Global Custom Metallic Silver Checkboxes (Applies to both Panel and Standalone Toggle) */
+/* Global Custom Metallic Silver Checkboxes */
 .form-check-input {
   background-color: #000000;
   border: 1.5px solid #94a3b8;
@@ -202,7 +238,6 @@ html, body {
   background-color: #e2e8f0;
   border-color: #ffffff;
   box-shadow: 0 0 6px rgba(226, 232, 240, 0.8);
-  /* Custom black checkmark icon matching the metallic theme */
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
 }
 
@@ -269,7 +304,7 @@ html, body {
 .footer-copyright {
   text-align: center;
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.25); /* Washed-out light gray */
+  color: rgba(255, 255, 255, 0.25);
   padding: 10px 0 5px 0;
   font-family: 'Segoe UI', Arial, sans-serif;
   user-select: none;
